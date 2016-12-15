@@ -59,13 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public int getItemCount() {
                 return mItemCount;
             }
-
-            @Override
-            public long getItemId(int position) {
-                return position;
-            }
         };
-        adapter.setHasStableIds(true);
         mRecyclerView.setAdapter(adapter);
     }
 
