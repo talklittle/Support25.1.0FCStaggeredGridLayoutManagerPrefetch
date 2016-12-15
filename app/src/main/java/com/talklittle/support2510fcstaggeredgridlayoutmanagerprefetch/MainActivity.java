@@ -40,14 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) holder.itemView.getLayoutParams();
                 layoutParams.setFullSpan(position % 15 == 0);
 
-                final View fItemView = holder.itemView;
+                layoutParams.height = (int) (200 + (Math.random() * 1000));
+                holder.itemView.setLayoutParams(layoutParams);
+
                 holder.itemView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) fItemView.getLayoutParams();
-                        layoutParams.height = (int) (200 + (Math.random() * 1000));
-                        fItemView.setLayoutParams(layoutParams);
-
                         notifyItemChanged(position);
                     }
                 }, (long) (Math.random() * 5000));
