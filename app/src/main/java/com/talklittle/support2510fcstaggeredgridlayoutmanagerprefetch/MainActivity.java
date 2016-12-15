@@ -12,8 +12,6 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
-    private int mSpanCount = 2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler);
 
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(mSpanCount, StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         RecyclerView.Adapter adapter = new RecyclerView.Adapter() {
             int mItemCount = 50;
@@ -71,17 +69,11 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
     }
 
-    public void toggleSpanCount(View view) {
-        mSpanCount = (mSpanCount == 2) ? 1 : 2;
-        StaggeredGridLayoutManager layoutManager = (StaggeredGridLayoutManager) mRecyclerView.getLayoutManager();
-        layoutManager.setSpanCount(mSpanCount);
-    }
-
     private static class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mTextView;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView) {
             super(itemView);
             mTextView = (TextView) itemView.findViewById(android.R.id.text1);
         }
